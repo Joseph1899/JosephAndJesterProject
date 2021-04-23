@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!- GO TO NEW PAGE-->
+    
+    <script type="text/javascript">
+         function clearTxt(){
+                        $("#name").text("");
+                        $("#lastName").text("");
+                        $("#address").text("");
+    
+                        $("#idTxt").val(""); 
+        }
+        function goToNewPage()
+        {
+            var url = document.getElementById('list').value;
+            if(url != 'none') {
+                window.location = url;
+            }
+        }
+    </script>
+
+<!- PUT PERSON-->
+
+<meta charset="ISO-8859-1">
+<title>Update Person</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    function updatePerson(){
+	// PREPARE JSON DATA
+	var json = {
+			id: $("#idTxt").val(),
+			name : $("#name").val(),
+			lastName : $("#lastName").val(),
+			address : $("#address").val(),
+	}
+            
+            $(document).ready(function() {
+  
+                $.ajax({
+		type : "PUT",
+		contentType : "application/json",
+		url : "http://localhost:8080/record/person",
+		data : JSON.stringify(json),
+		dataType : 'json',
+		
+		// SUCCESS response
+		success : function(result) {
+			// Create successful message
+            return window.alert("Person updated!");
+			$("#personUpdate").html("{id: " + person.id +"name: " + person.name +", lastName: " + person.age +", address: " + person.address +"}");
+			
+			// Again fill data to Update-Form
+			$("#idTxt").val(person.id);
+			$("#name").val(person.name);
+			$("#lastName").val(person.lastName);
+			$("#address").val(person.address);
+           
+		},
+        error : function(error) {
+            return window.alert("Person update failed!");
+			console.log(error);
+                    }
+	});
+})
+}
+        
+</script>
+
+<!- DROP DOWN BOX-->
+
+</head>
+<body>
+    <div>
+        <form>
+            <select name="list" id="list" accesskey="target">
+                <option value='none' selected>Select a process</option>
+                <option value="view.html">View Person Data</option>
+                <option value="insert.html">Insert Person Data</option>
+                <option value="update.html">Update Person Data</option>
+                <option value="delete.html">Delete Person Data</option>
+            </select>
+            <input type=button value="Go" onclick="goToNewPage()" />
+            </form>
+
+<!- DATA FIELDS-->
+
+        <h1>Update Record Information</h1>
+        <hr>
+        <div>
+        <b>Your ID:</b> <input type="text" placeholder="ID" id="idTxt"></input>
+        </div>
+        <b>First Name:</b> <input type="text" placeholder="First Name" id="name"></input>
+    </div>
+    <div>
+        <b>LastName:</b> <input type="text" placeholder="Last Name" id="lastName"></input>
+    </div>
+    <div>
+        <b>Address:</b> <input type="text" placeholder="Address" id="address"></input>
+    </div>
+    <div>
+    <input type="button" value="Update Record" id="updateBtn" onclick="updatePerson()"></input>
+    <input type="button" value="Refresh" id="clrBtn" onclick="clearTxt()">
+    </div>
+<!- GO TO HOMEPAGE-->
+    <div>
+    <input type="button" onclick="location.href='index.html';" value="Go back to home page" />
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!- GO TO NEW PAGE-->
+    
+    <script type="text/javascript">
+           function clearTxt(){
+                        $("#name").text("");
+                        $("#lastName").text("");
+                        $("#address").text("");
+        }
+        function goToNewPage()
+        {
+            var url = document.getElementById('list').value;
+            if(url != 'none') {
+                window.location = url;
+            }
+        }
+    </script>
+
+<!- POST PERSON-->
+
+<meta charset="ISO-8859-1">
+<title>Insert Person</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+    
+        function insertPerson() {     
+            var name= $('#name').val();
+            var lastName= $('#lastName').val();
+            var address= $('#address').val();
+
+            var json = ({"name":name, "lastName":lastName,"address": address});
+            
+            $(document).ready(function() {
+  
+                $.ajax({
+    
+                    url: "http://localhost:8080/record/person",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (result) {    
+                        return window.alert("Person saved successfuly!");
+                        console.log(result)
+                    },
+                    error: function(error) {
+                        return window.alert("Person save failed!");
+                        console.log(error);
+                    }
+                })
+            }) 
+        }
+        
+</script>
+
+<!- DROP DOWN BOX-->
+
+</head>
+<body>
+    <div>
+        <form>
+            <select name="list" id="list" accesskey="target">
+                <option value='none' selected>Select a process</option>
+                <option value="view.html">View Person Data</option>
+                <option value="insert.html">Insert Person Data</option>
+                <option value="update.html">Update Person Data</option>
+                <option value="delete.html">Delete Person Data</option>
+            </select>
+            <input type=button value="Go" onclick="goToNewPage()" />
+            </form>
+
+<!- DATA FIELDS-->
+
+        <h1>Insert Record Information</h1>
+        <hr>
+
+        <b>First Name:</b> <input type="text" placeholder="First Name" id="name"></input>
+    </div>
+    <div>
+        <b>LastName:</b> <input type="text" placeholder="Last Name" id="lastName"></input>
+    </div>
+    <div>
+        <b>Address:</b> <input type="text" placeholder="Address" id="address"></input>
+    </div>
+    <div>
+    <input type="button" value="Save Record" id="insertBtn" onclick="insertPerson()"></input>
+    <input type="button" value="Refresh" id="clrBtn" onclick="clearTxt()">
+    </div>
+<!- GO TO HOMEPAGE-->
+    <div>
+    <input type="button" onclick="location.href='index.html';" value="Go back to home page" />
+    </div>
+
+</body>
+</html>
+

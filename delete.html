@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!- GO TO NEW PAGE-->
+
+    <script type="text/javascript">
+        function goToNewPage()
+        {
+            var url = document.getElementById('list').value;
+            if(url != 'none') {
+                window.location = url;
+            }
+        }
+    </script>
+
+<!- DELETE PERSON-->
+
+<meta charset="ISO-8859-1">
+<title>Delete Person Information</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+        function deletePerson() {
+            var personId = $("#idTxt").val();     
+           
+            $(document).ready(function() {
+                
+                $.ajax({
+                    url: "http://localhost:8080/record/person?id="+personId,
+                    type: "DELETE",                
+                    success: function (result) {                    
+                        return window.alert("Your record is deleted successfuly!");
+                        console.log(result)
+                    },
+                    error: function(error) {
+                        return window.alert("Please enter an Id to delete!");
+                        console.log(error);
+                    }
+                })
+            })
+        }
+</script>
+
+<!- DROP DOWN BOX-->
+
+<body>
+    <div>
+        <form>
+            <select name="list" id="list" accesskey="target">
+                <option value='none' selected>Select a process</option>
+                <option value="view.html">View Person Data</option>
+                <option value="insert.html">Insert Person Data</option>
+                <option value="update.html">Update Person Data</option>
+                <option value="delete.html">Delete Person Data</option>
+            </select>
+            <input type=button value="Go" onclick="goToNewPage()" />
+            </form>
+        <h1>Delete Person Record</h1>
+        <hr>
+    </div>
+
+<!- DATA FIELDS--> 
+
+    <b>Insert Your ID:</b> <input type="text" placeholder="Person ID" id="idTxt"></input>
+                    <input type="button" value="Delete Record" id="deleteBtn" onclick="deletePerson()"></input>
+
+<!- GO TO HOMEPAGE-->
+
+    <div>
+    <input type="button" onclick="location.href='index.html';" value="Go back to home page" />
+    </div>
+</body>
+</html>

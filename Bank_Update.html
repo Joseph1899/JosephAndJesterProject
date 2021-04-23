@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!- GO TO NEW PAGE-->
+    
+    <script type="text/javascript">
+
+        function clearTxt(){
+         $("#person_Id").val("");
+         $("#accountName").val("");
+         $("#bankAddress").val("");
+                   
+         $("#idTxt").val(""); 
+        }
+
+        function goToNewPage()
+        {
+            var url = document.getElementById('list').value;
+            if(url != 'none') {
+                window.location = url;
+            }
+        }
+    </script>
+
+<!- PUT BANK-->
+
+<meta charset="ISO-8859-1">
+<title>Update Bank</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    function updateBank(){
+	// PREPARE JSON DATA
+	var json = {
+			id: $("#idTxt").val(),			
+			accountName: $("#accountName").val(),
+			bankAddress: $("#bankAddress").val()
+
+          //  json :{"person": {"id": personId},"idTxt": id,"accountName": accountName,"bankAddress": bankAddress},
+        };
+        var uri = "http://localhost:8080/bankrecord/bank/"+$("#person_id").val();
+
+        $(document).ready(function() {
+                
+               
+        $.ajax({
+		type : "PUT",
+		contentType : "application/json",
+		url : uri, 
+		data : JSON.stringify(json),
+		dataType : 'json',
+		
+        
+
+
+
+		// SUCCESS response
+		success : function(result) {
+			// Create successful message
+            return window.alert("Bank Record Updated Successfully!");
+			$("#bankUpdate").html({"person": {"id": personId},"idTxt": id,"accountName": accountName,"bankAddress": bankAddress}); 
+			// Again fill data to Update-Form
+		    $("#idTxt").val(bank.id);
+			$("#personId").val(bank.personId);
+			$("#accountName").val(bank.accountName);
+			$("#bankAddress").val(bank.bankAddress);
+           
+		},
+        error : function(error) {
+             $("#idTxt").val(""),	
+             $("#personId").val(""),			
+			 $("#accountName").text(""),
+			 $("#bankAddress").text("")
+            return window.alert("Bank Record update failed!");
+			console.log(error);
+                    }
+	});
+})
+}       
+</script>
+
+<!- DROP DOWN BOX-->
+
+</head>
+<body>
+    <div>
+        <form>
+            <select name="list" id="list" accesskey="target">
+                <option value='none' selected>Select a process</option>
+                <option value="Bank_View.html">View Bank Data</option>
+                <option value="Bank_Insert.html">Insert Bank Data</option>
+                <option value="Bank_Update.html">Update Bank Data</option>
+                <option value="Bank_Delete.html">Delete Bank Data</option>
+            </select>
+            <input type=button value="Go" onclick="goToNewPage()" />
+            </form>
+
+<!- DATA FIELDS-->
+
+        <h1>Update Bank Record</h1>
+        <hr>
+        <div>
+        <b>Bank ID:</b> <input type="text" placeholder="Bank ID" id="idTxt"></input>
+        </div>
+        <b>Person Id:</b> <input type="text" placeholder="Person ID" id="person_id"></input>
+    </div>
+    <div>
+        <b>Account Name:</b> <input type="text" placeholder="Account Name" id="accountName"></input>
+    </div>
+    <div>
+        <b>Bank Address:</b> <input type="text" placeholder="Bank Address" id="bankAddress"></input>
+    </div>
+    <div>
+    <input type="button" value="Update Record" id="updateBtn" onclick="updateBank()"></input>
+    <input type="button" value="Refresh" id="clrBtn" onclick="clearTxt()">
+    </div>
+        
+    
+<!- GO TO HOMEPAGE-->
+    
+    <div>
+    <input type="button" onclick="location.href='index.html';" value="Go back to home page" />
+    </div>
+
+</body>
+</html>
+

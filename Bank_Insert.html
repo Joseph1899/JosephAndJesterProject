@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!- GO TO NEW PAGE-->
+    
+    <script type="text/javascript">
+
+        function clearTxt(){
+         $("#person_Id").val("");
+         $("#accountName").val("");
+         $("#bankAddress").val("");
+                   
+
+        }
+
+        function goToNewPage()
+        {
+            var url = document.getElementById('list').value;
+            if(url != 'none') {
+                window.location = url;
+            }
+        }
+    </script>
+
+<!- POST BANK-->
+
+<meta charset="ISO-8859-1">
+<title>Insert Bank</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+    
+        function insertBank() {     
+            var personId= $('#person_Id').val();
+            var accountName= $('#accountName').val();
+            var bankAddress= $('#bankAddress').val();
+  
+           var json = {"accountName":accountName,"bankAddress":bankAddress,"person":{"id":personId}};
+   
+            
+            $(document).ready(function() {
+  
+                $.ajax({
+    
+                    url: "http://localhost:8080/bankrecord/bank/",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (result) {  
+                        return window.alert("Bank Record saved successfully!");
+                        console.log(result)
+                    },
+                    error: function(error) {
+                        return window.alert("Bank Record save failed!");
+                        console.log(error);
+                    }
+                })
+            }) 
+        }
+        
+</script>
+
+<!- DROP DOWN BOX-->
+
+</head>
+<body>
+    <div>
+        <form>
+            <select name="list" id="list" accesskey="target">
+                <option value='none' selected>Select a process</option>
+                <option value="Bank_View.html">View Bank Data</option>
+                <option value="Bank_Insert.html">Insert Bank Data</option>
+                <option value="Bank_Update.html">Update Bank Data</option>
+                <option value="Bank_Delete.html">Delete Bank Data</option>
+            </select>
+            <input type=button value="Go" onclick="goToNewPage()" />
+            </form>
+
+<!- DATA FIELDS-->
+
+        <h1>Insert Bank Record Information</h1>
+        <hr>
+
+        <b>Person Id:</b> <input type="text" placeholder="Person ID" id="person_Id"></input>
+        <label id="perIdLbl"></label>
+    </div>
+    <div>
+        <b>Account Name:</b> <input type="text" placeholder="Account Name" id="accountName"></input>
+    </div>
+    <div>
+        <b>Bank Address:</b> <input type="text" placeholder="Bank Address" id="bankAddress"></input>
+    </div>
+    <div>
+    <input type="button" value="Save Record" id="insertBtn" onclick="insertBank()"></input>
+    <input type="button" value="Refresh" id="clrBtn" onclick="clearTxt()">
+    </div>      
+    
+<!- GO TO HOMEPAGE-->
+
+    <div>
+    <input type="button" onclick="location.href='index.html';" value="Go back to home page" />
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!- GO TO NEW PAGE-->
+
+    <script type="text/javascript">
+        function goToNewPage()
+        {
+            var url = document.getElementById('list').value;
+            if(url != 'none') {
+                window.location = url;
+            }
+        }
+    </script>
+
+<!- DELETE PERSON-->
+
+<meta charset="ISO-8859-1">
+<title>Delete Bank Information</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+        function deleteBank() {
+            var bankId = $("#idTxt").val();     
+           
+            $(document).ready(function() {
+                
+                $.ajax({
+                    url: "http://localhost:8080/bankrecord/bank?id="+bankId,
+                    type: "DELETE",                
+                    success: function (result) {                    
+                        return window.alert("Your record is deleted successfuly!");
+                        console.log(result)
+                    },
+                    error: function(error) {
+                        $("#idTxt").val(); 
+                        return window.alert("Please enter an Id to delete!");
+                        console.log(error);
+                    }
+                })
+            })
+        }
+</script>
+
+<!- DROP DOWN BOX-->
+
+<body>
+    <div>
+        <form>
+            <select name="list" id="list" accesskey="target">
+                <option value='none' selected>Select a process</option>
+                <option value="Bank_View.html">View Bank Data</option>
+                <option value="Bank_Insert.html">Insert Bank Data</option>
+                <option value="Bank_Update.html">Update Bank Data</option>
+                <option value="Bank_Delete.html">Delete Bank Data</option>
+            </select>
+            <input type=button value="Go" onclick="goToNewPage()" />
+            </form>
+        <h1>Delete Bank Record</h1>
+        <hr>
+    </div>
+
+<!- DATA FIELDS--> 
+    <div>
+    <b>Bank ID:</b> <input type="text" placeholder="Bank ID" id="idTxt"></input>
+                    <input type="button" value="Delete Record" id="deleteBtn" onclick="deleteBank()"></input>
+    </div>
+<!- GO TO HOMEPAGE-->
+
+    <div>
+    <input type="button" onclick="location.href='index.html';" value="Go back to home page" />
+    </div>
+</body>
+</html>
