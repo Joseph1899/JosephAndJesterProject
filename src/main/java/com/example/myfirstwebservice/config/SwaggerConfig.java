@@ -46,7 +46,6 @@ public class SwaggerConfig {
 	 * ApiInfo("Sample- test","sample","test","api","sample","test","api"); return
 	 * apiInfo; }
 	 */
-	
 	  private ApiInfo getApiInfo() { return new
 	  ApiInfoBuilder().title(MyStringConstant.API_INFO_TITLE)
 	  .description(MyStringConstant.API_INFO_DESCRIPTION)

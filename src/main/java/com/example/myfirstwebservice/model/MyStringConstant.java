@@ -29,7 +29,7 @@ public abstract class MyStringConstant {
 	/**
 	 * This is the license url for the project: myfirstwebservice.
 	 * */
-	public final static String API_INFO_LICENSE_URL = "https://github.com/Joseph1899";
+	public final static String API_INFO_LICENSE_URL = "https://github.com/Joseph1899/JosephAndJesterProject";
 	/**
 	 * This is the terms and services url for the project: myfirstwebservice.
 	 * */
