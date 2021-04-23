@@ -7,11 +7,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-
-/***
- *@author Miranda Aristotle
+/**
+ *This is the Data Source Config.
+ *@author Joseph and Jester
+ *@version 1.0
+ *@since March 22, 2021
+ *
+ *<h1>Git:</h1>
+ *<ul>
+ * <li>Joseph1899@github.com</li>
+ * <li>JesterAlcantara@github.com</li>
+ * </ul>
+ * <p>This is the Hikari Data Source Config for the project: myfirstwebservice. </p>
  **/
-
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties("spring.datasource")

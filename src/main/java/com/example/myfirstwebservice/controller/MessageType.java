@@ -2,6 +2,19 @@ package com.example.myfirstwebservice.controller;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.stream.Stream;
+/**
+*This handles custom errors.
+*@author Joseph and Jester
+*@version 1.0
+*@since March 22, 2021
+*
+*<h1>Git:</h1>
+*<ul>
+* <li>Joseph1899@github.com</li>
+* <li>JesterAlcantara@github.com</li>
+* </ul>
+* <p>This is the object that handles custom error.</p>
+**/
 
 public enum MessageType {
 

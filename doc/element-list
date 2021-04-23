@@ -1,7 +1,9 @@
 com.example.myfirstwebservice
+com.example.myfirstwebservice.config
 com.example.myfirstwebservice.controller
 com.example.myfirstwebservice.dao
 com.example.myfirstwebservice.entity
+com.example.myfirstwebservice.exception
+com.example.myfirstwebservice.model
 com.example.myfirstwebservice.repo
 com.example.myfirstwebservice.service
-execption

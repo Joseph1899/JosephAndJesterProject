@@ -10,11 +10,23 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.myfirstwebservice.controller.MessageType;
 import com.example.myfirstwebservice.entity.Bank;
 import com.example.myfirstwebservice.entity.Person;
+import com.example.myfirstwebservice.exception.CustomException;
 import com.example.myfirstwebservice.repo.BankRepo;
 import com.example.myfirstwebservice.repo.PersonRepo;
 
-import execption.CustomException;
-
+/**
+*This is the Data Access Object for the Bank.
+*@author Joseph and Jester
+*@version 1.0
+*@since March 22, 2021
+*
+*<h1>Git:</h1>
+*<ul>
+* <li>Joseph1899@github.com</li>
+* <li>JesterAlcantara@github.com</li>
+* </ul>
+* <p>This object is responsible for the CRUD operations of the entity Bank.</p>
+**/
 
 @Repository
 @Transactional
@@ -22,7 +34,10 @@ public class BankDAOImpl {
 
 	//Perform SQL operation under this class
 	
-	@Autowired   //widely used for Dependency Injection
+	/**
+	 * This injects the object BankRepo as bankRepo.
+	 * */
+	@Autowired
 	BankRepo bankRepo;
 	
 	//Read
@@ -49,9 +64,15 @@ public class BankDAOImpl {
 
 	
 	//Update
-	public Bank updateBankInfo(Bank bank) {
-		return bankRepo.saveAndFlush(bank);
-	}
+		public Bank updateBankInfo(Bank bank) throws Exception {
+			Optional<Bank> bankOPT = bankRepo.findById(bank.getId());
+			if(bankOPT.isEmpty()) {
+				throw new CustomException(MessageType.UPDATE_ONLY.getCode());
+			}
+			
+			return bankRepo.saveAndFlush(bank);
+		  
+		}
 	
 	//Delete
 	public String deleteBankInfo(int id) {

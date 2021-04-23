@@ -17,48 +17,56 @@ import javax.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  *Represents a Person
- *@author Group 1
+ *@author Joseph and Jester
  *@version 1.0
  *@since March 22, 2021
  *
- *<h1>Collaborators:</h1>
+ *<h1>Git:</h1>
  *<ul>
- * <li>Macsterss47@github.com</li>
- * <li>ivanclemente20@github.com</li>
  * <li>Joseph1899@github.com</li>
  * <li>JesterAlcantara@github.com</li>
  * </ul>
- * <p>This is the entity for the table Person in myfirstwebservice. </p>
+ * <p>This is the entity for the table Person in the project: myfirstwebservice. </p>
  **/
 
 @Entity
 @Table(name = "Person")
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
-     /**
-     * DTO 
-     * 
-     */
-
-  
-
+    /**
+	 * This is a column named id for the table Person.
+	 * */
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
+    /**
+   	 * 
+   	 * This creates a relationship to the table bank OneToMany mapped by person.
+   	 */
     @OneToMany(mappedBy= "person")
     @JsonIgnoreProperties(value = "person")
     private Set<Bank> bank;
-
+    
+    /**
+   	 * This is a column named name for the table Person.
+   	 * */
     @Column
     private String name;
-
+    
+    /**
+   	 * This is a column named lastName for the table Person.
+   	 * */
     @Column
     private String lastName;
-
+    
+    /**
+   	 * This is a column named address for the table Person.
+   	 * */
     @Column
     private String address;
 

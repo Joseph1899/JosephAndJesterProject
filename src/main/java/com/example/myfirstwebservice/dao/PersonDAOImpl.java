@@ -12,21 +12,38 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.myfirstwebservice.controller.MessageType;
 import com.example.myfirstwebservice.entity.Bank;
 import com.example.myfirstwebservice.entity.Person;
+import com.example.myfirstwebservice.exception.CustomException;
 import com.example.myfirstwebservice.repo.BankRepo;
 import com.example.myfirstwebservice.repo.PersonRepo;
 import com.example.myfirstwebservice.service.PersonRecordService;
 
-import execption.CustomException;
-
+/**
+*This is the Data Access Object for the Person.
+*@author Joseph and Jester
+*@version 1.0
+*@since March 22, 2021
+*
+*<h1>Git:</h1>
+*<ul>
+* <li>Joseph1899@github.com</li>
+* <li>JesterAlcantara@github.com</li>
+* </ul>
+* <p>This object is responsible for the CRUD operations of the entity Person.</p>
+**/
 @Repository
 @Transactional
 public class PersonDAOImpl {
 
 	//Perform SQL operation under this class
 	
-	@Autowired   //widely used for Dependency Injection
+	/**
+	 * This injects the object PersonRepo.
+	 * */
+	@Autowired 
 	PersonRepo personRepo;
-	
+	/**
+	 * This injects the object BankRepo.
+	 * */
 	@Autowired
 	BankRepo bankRepo;
 	
