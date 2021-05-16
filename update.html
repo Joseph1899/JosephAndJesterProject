@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        body {
+    background: url("bg_blurred.jpg");
+    background-size: cover;
+  }
+    .label{
+        width: 125px;
+        display: inline-block;
+        text-align: center;
+        padding: 5px;
+    }
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-<!- GO TO NEW PAGE-->
-    
-    <script type="text/javascript">
-         function clearTxt(){
-                        $("#name").text("");
-                        $("#lastName").text("");
-                        $("#address").text("");
-    
-                        $("#idTxt").val(""); 
-        }
-        function goToNewPage()
-        {
-            var url = document.getElementById('list').value;
-            if(url != 'none') {
-                window.location = url;
-            }
-        }
-    </script>
+<script type="text/javascript">
+    function clearTxt(){
+                    $("#idTxt").val("");
+                    $("#name").val("");
+                    $("#lastName").val("");
+                    $("#address").val(""); 
+          
+    }
+</script>
+
 
 <!- PUT PERSON-->
 
@@ -69,45 +76,89 @@
         
 </script>
 
-<!- DROP DOWN BOX-->
 
 </head>
 <body>
-    <div>
-        <form>
-            <select name="list" id="list" accesskey="target">
-                <option value='none' selected>Select a process</option>
-                <option value="view.html">View Person Data</option>
-                <option value="insert.html">Insert Person Data</option>
-                <option value="update.html">Update Person Data</option>
-                <option value="delete.html">Delete Person Data</option>
-            </select>
-            <input type=button value="Go" onclick="goToNewPage()" />
-            </form>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+        <!-- Brand/logo -->
+        <a class="bank_logo" href="logo_bank.PNG">
+            <img src="logo_bank.PNG" alt="bank" style="width:50px;">
+          </a>
+        <!-- Links -->
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="view.html">View User</a>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="insert.html">Create User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="update.html">Update User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="delete.html">Delete User</a>
+          </li>
+          <button class="btn btn-warning navbar-btn"><a href="Bank_View.html">Go to Bank Form</a></button>
+        </ul>
+      </nav>
+      
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+        <!-- Links -->
+        <span class="navbar-text ml-auto">
+            Author: Joseph and Jester
+          </span>
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Joseph1899/JosephAndJesterProject">Click for our GitHub Repository</a>
+          </li>
+        </ul>
+      </nav>
 
 <!- DATA FIELDS-->
-
-        <h1>Update Record Information</h1>
+<div class="container-fluid my-3">
+<div class="col-md-12 p-4 text-center">
+        <h1>Update User</h1>
         <hr>
+</div>
+</div>
+<div class="container-fluid my-3">
+    <div class="col-md-12 text-center">
         <div>
-        <b>Your ID:</b> <input type="text" placeholder="ID" id="idTxt"></input>
+        <element class="label">
+        <b>Your ID:</b> 
+        </element>
+        <input type="text" placeholder="ID" id="idTxt"></input>
         </div>
-        <b>First Name:</b> <input type="text" placeholder="First Name" id="name"></input>
+        <div>
+        <element class="label">
+        <b>First Name:</b> 
+        </element>
+        <input type="text" placeholder="First Name" id="name"></input>
     </div>
     <div>
-        <b>LastName:</b> <input type="text" placeholder="Last Name" id="lastName"></input>
+        <element class="label">
+        <b>LastName:</b> 
+        </element>
+        <input type="text" placeholder="Last Name" id="lastName"></input>
     </div>
     <div>
-        <b>Address:</b> <input type="text" placeholder="Address" id="address"></input>
+        <element class="label">
+        <b>Address:</b> 
+         </element>
+        <input type="text" placeholder="Address" id="address"></input>
     </div>
+
+</div>
+    </div>
+    <div class="container-fluid my-3">
+        <div class="col-md-12 p-4 text-center">
     <div>
-    <input type="button" value="Update Record" id="updateBtn" onclick="updatePerson()"></input>
-    <input type="button" value="Refresh" id="clrBtn" onclick="clearTxt()">
+    <input class="btn btn-primary" type="button" value="Update Record" id="updateBtn" onclick="updatePerson()"></input>
+    <input class="btn btn-warning" type="button" value="Refresh" id="clrBtn" onclick="clearTxt()">
     </div>
-<!- GO TO HOMEPAGE-->
-    <div>
-    <input type="button" onclick="location.href='index.html';" value="Go back to home page" />
     </div>
+    </div>
+
 
 </body>
 </html>

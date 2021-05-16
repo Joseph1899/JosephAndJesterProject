@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style> 
+      body {
+        background-image: url("bg_bank.png");
+        background-color: #cccccc;
+        background-size: cover;
+      }
+      </style>
     <title>Person and Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   </head>
   <body>
+    <div class="container my-5 text-white"></div>
+      <div class="col-md-12 text-center">
       <div>
         <h1>Choose</h1>
         <hr>
       </div>
       <div>
-    <input type="button" onclick="location.href='view.html';" value="PERSON" />
-    <b>||</b>
-    <input type="button" onclick="location.href='Bank_View.html';" value="BANK" />
+    <a href="view.html"><input class="btn btn-primary" type = "button" value="Person"></a>
+    <a href="Bank_View.html"><input class="btn btn-warning" type = "button" value="Bank"></a>
+    </div>
+    <div>
+      <footer>
+          <p>Author: Joseph and Jester<br>
+          <a href="https://github.com/Joseph1899/JosephAndJesterProject">Click for our GitHub Repository</a></p>
+        </footer>
+      </div>
+    </div>
     </div>
   </body>
 </html>
