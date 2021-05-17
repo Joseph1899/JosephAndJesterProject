@@ -7,10 +7,17 @@
     background-size: cover;
   }
     .label{
-        width: 550px;
+        width: 580px;
         display: inline-block;
         text-align: right;
     }
+    input{
+          border-radius: 10px;
+          text-align: center;
+        }
+        h1, h2 {
+  text-shadow: 2px 2px #09ff09;
+}
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -108,7 +115,7 @@
 
 <!- DATA FIELDS--> 
 <div class="container-fluid my-3">
-    <div class="col-md-12 p-3 text-center">
+    <div class="col-md-12  text-center">
     <b>Bank ID:</b> <input type="text" placeholder="Bank ID" id="bankIdTxt"></input>
                     <input type="button" class="btn btn-primary" value="Search Bank Record" id="searchBtn" onclick="searchBank()"></input>
     </div>
